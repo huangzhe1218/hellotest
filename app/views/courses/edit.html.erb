@@ -1,0 +1,62 @@
+<% content_for :template_js do %>
+  <%= javascript_include_tag 'i_fileupload'%>
+  <script>
+    jQuery(function($) {
+      var _tip = $("#poster-upload-tip");
+      $('#poster-fileupload').fileupload({
+          dataType: 'script',
+          url: '/update_poster/<%= @course.id %>',
+          add: function(e, data){
+            types = /(\.|\/)(gif|jpe?g|png)$/i;
+            file = data.files[0];
+            if (types.test(file.type) || types.test(file.name))
+            {
+              data.submit();
+            }
+            else
+            {
+              alert(file.name + " 不是图片，请重新选择！");
+            }
+          },
+          start: function(e) {
+            _tip.html('上传中&nbsp;&middot;&middot;&middot;');
+          },
+          done: function (e, data) {
+            _tip.html("广告封面修改成功!");
+          },
+      });
+      $("#course_title").keyup(function(){
+        document.all["input_title2"].value = document.all["course_title"].value;
+      });
+      $("#course_desc").keyup(function(){
+        document.all["input_content2"].value = document.all["course_desc"].value;
+      });
+    
+  });
+  </script>
+<% end %>
+<div class='container'>
+  <div class="tutorial-page">
+    <div class="tutorial-nav">
+      <h3>
+        <%= @course.title %>
+        <%= link_to "返回首页", {:controller=>"about", :action=>"main" }, :class => "button" %>
+      </h3>
+      <div class="edit-course-info-area">
+        <div id="edit-course-poster">
+          <a class= "fileupload-btn button primary">
+            <span id="poster-upload-tip">更换广告封面</span>
+            <input id="poster-fileupload" name="course[poster]" type="file">
+          </a>
+          <p>(<%= t('course_poster_dimension') %>)</p>
+        </div>
+        <div id="edit-course-desc">
+          <%= render 'update_form', :course => @course %>
+        </div>
+      </div>
+    </div>
+    <div class="tutorial-content">
+      <%= render "add_photo", :course => @course %>
+    </div>
+  </div>
+</div>

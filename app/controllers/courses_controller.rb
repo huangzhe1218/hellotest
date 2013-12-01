@@ -1,0 +1,105 @@
+# encoding: utf-8
+class CoursesController < ApplicationController
+  before_filter :check_owner, :only => [:edit, :update, :destory]
+  before_filter :find_course, :only => [:show, :edit, :watch, :unwatch, :watchers]
+
+  def check_owner
+    if current_user.nil?
+      redirect_to :root, :notice => t('login_first_plz')
+      return
+    end
+    if params[:course_name]
+      user = User.find_by_mac(params[:member_name])
+      course = Course.where(:user_id => user.id, :name => params[:course_name]).first
+    else
+      # for update
+      course = Course.where(:user_id => params[:course][:user_id], :name => params[:course][:name]).first
+    end
+    if course.user != current_user
+      redirect_to :root, :notice => "抱歉，只有广告所有者才有此权限"
+      return
+    end
+  end
+
+  def new
+    @course = Course.new(:user_id => current_user.id)
+    session[:return_to] = request.url
+  end
+
+
+  def show
+    if @course.nil?
+      redirect_to(:root, :notice => '抱歉，您访问的广告不存在')
+    else
+      session[:return_to] = request.url
+    end
+  end
+
+  def edit
+    session[:return_to] = request.url
+  end
+
+  def update
+    if params[:course][:public]
+      Course.update_all("public=1, public=0")
+    end
+    @course = Course.where(:user_id => params[:course][:user_id], :name => params[:course][:name]).first
+    @course.update_attributes(params[:course])
+    @course.name = PinYin.of_string(params[:course][:title]).join('-').downcase
+    print params[:course][:public]
+    respond_to do |format|
+      if @course.save
+        format.html { redirect_to :root, :notice => '广告更新成功' }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+  end
+
+
+  def update_poster
+    @course = Course.find(params[:course_id])
+    respond_to do |format|
+      format.js do
+        @course.update_attributes(params[:course])
+      end
+    end
+  end
+
+  def create
+    user = User.find(params[:course][:user_id])
+    title = params[:course][:title]
+    name = PinYin.of_string(title).join('-').downcase
+    user.courses.each do |c|
+      if c.name == name
+        @name_exsits = true
+      end
+    end
+    if defined? @name_exsits
+      redirect_to_target_or_default :root, :notice => "你已经创建相同的广告"
+      return
+    end
+    course = Course.new(params[:course])
+    course.name = name
+    if course.save
+      redirect_to edit_course_path(course), :notice => "新广告创建成功！"
+    else
+      redirect_to_target_or_default :root, :notice => "新广告创建失败！"
+    end
+  end
+
+  def destroy
+    user = User.find_by_mac(params[:member_name])
+    course = Course.where(:user_id => user.id, :name => params[:course_name]).first
+    course.destroy
+    redirect_to :root
+  end
+
+
+
+  private
+  def find_course
+    user = User.find_by_mac(params[:member_name])
+    @course = Course.where(:user_id => user.id, :name => params[:course_name]).first
+  end
+end

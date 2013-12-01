@@ -1,0 +1,9 @@
+<%= form_tag "/submit_login_form", :class => "home-signup" do  %>
+  <dl class="form">
+    <dd>
+    <%= text_field_tag :mac, params[:mac],  :placeholder => "mac", :class => "short" %>
+    </dd>
+  </dl>
+  <p class="text-muted">登陆后就可定制你的广告了</p>
+  <p><%= submit_tag "登陆", :class => "button button-block primary" %></p>
+<% end %>

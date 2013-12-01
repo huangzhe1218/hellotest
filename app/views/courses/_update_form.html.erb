@@ -1,0 +1,50 @@
+<% content_for :template_js do %>
+  <script>
+    $('#course_desc').NobleCount('#desc_count',{
+      on_negative: 'go_red',
+      on_positive: 'go_green',
+      max_chars: 33});
+  </script>
+<% end %>
+<%= form_for(@course, :url => "/course") do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :name %>
+  <%= flash[:notice] %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <dl class="form">
+    <dt> <%= f.label "广告标题" %> </dt>
+    <dd> <%= f.text_field :title, :class => "short"  %> </dd>
+  </dl>
+  <dl class="form">
+    <dt>
+      <%= f.label "广告内容" %>
+      (<%= t('remaining') %><span id='desc_count'></span> <%= t('characters') %>)
+    </dt>
+    <dd>
+      <%= f.text_area :description, :size => "14x4", :id => "course_desc" %>
+    </dd>
+  </dl>
+  <div class="form">
+    <%= f.check_box :public %>
+    <%= f.label "公开广告" %>
+  </div>
+  <div>
+    <%= f.submit "更新广告", :class => "button primary" %>
+    <span id="edit-course-delete">
+      <%= link_to "删除广告", @course, :confirm => t('confirm_delete'), :method => :delete, :class => "minibutton danger" %>
+    </span>
+  </div>
+<% end %>
+

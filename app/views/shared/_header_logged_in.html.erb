@@ -1,0 +1,12 @@
+<div class="header header-logged-in">
+  <div class="container clearfix">
+    <a class="header-logo-wordmark" href="/">
+      企业Wifi服务平台 
+    </a>
+    <ul id="user-links">
+      <li class="name" > <%= current_user.mac %> </li>
+      <li> <%= link_to t("logout"), logout_path %></li>
+    </ul>
+  </div>
+</div>
+

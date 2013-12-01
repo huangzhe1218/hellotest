@@ -1,0 +1,23 @@
+<div class="menu-container">
+  <ul class="menu">
+    <li><a class="<%= request.path == "/about"? "active main":"main" %>" href="/about">广告管理</a></li>
+    <li><a class="<%= request.path == "/about/team"? "active team":"team" %>" href="/about/team">数据统计</a></li>
+    <li><a class="<%= request.path == "/about/jobs"? "active jobs":"jobs" %>" href="/about/jobs">用户认证</a></li>
+    <li><a class="<%= request.path == "/about/faq"? "active faq":"faq" %>" href="/about/faq">应用推广</a></li>
+  </ul>
+</div>
+<div class="contact-us">
+  <h3>找到我们</h3>
+  <p>
+    我们希望听到你的反馈，哪怕是一句早上好。给我们<a class="" href="mailto:huangzhe@ctbri.com.cn"><span><i class="icon-envelope"></i></span></a>吧。
+  </p>
+  <p>
+    <span class="label label-info">
+      <i class="icon-envelope"></i> Email
+    </span>
+    <br/>
+    <a href="mailto:huangzhe@ctbri.com.cn">
+      huangzhe@ctbri.com.cn
+    </a>
+  </p>
+</div>
