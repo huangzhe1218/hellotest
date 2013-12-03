@@ -14,6 +14,7 @@
 //= require jquery.atwho
 //= require jquery_ujs
 //= require courses
+//= require d3
 
 var commenter = [];
 var commenter_exist= [];

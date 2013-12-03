@@ -7,5 +7,9 @@ class AboutController < ApplicationController
       redirect_to login_path
     end
   end
+  def showdata
+  end
+
+
 
 end

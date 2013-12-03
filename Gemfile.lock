@@ -66,6 +66,8 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    d3-rails (3.3.7)
+      railties (>= 3.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -231,6 +233,7 @@ DEPENDENCIES
   carrierwave (~> 0.6.2)
   coffee-rails (~> 3.2.1)
   compass-rails
+  d3-rails (~> 3.3.7)
   factory_girl_rails
   font-awesome-rails
   guard-rspec
