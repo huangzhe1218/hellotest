@@ -3,6 +3,7 @@ Wifiplatform::Application.routes.draw do
   match "login"=>"info#marketing",  :as=>"login"
   match "submit_login_form" => "user#login"
   get "/about/showdata" => "about#showdata"
+  get "/week/data" => "weeks#data" 
   get "/create_course" => "courses#new", :as=>"create_course"
   get "/logout"=>"user#logout", :as=>"logout"
   post "/course" => "courses#create"

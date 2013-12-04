@@ -1,21 +1,21 @@
+<% content_for :template_js do %>
+  <%= javascript_include_tag 'hierarchical-pie'%>
+<script>
+  jQuery(function($) {
+    var holder = $('#pie-demo1');
+    holder.empty();
+
+    $.getJSON('/week/data.json', function(data) {
+      new HierarchicalPie({
+        chartId : '#pie-demo-1',
+        data : data
+      });
+    });
+  });
+</script>
+<% end %>
 <div class="about-team">
-  <h1>团队成员</h1>
+  <h1>每周/日消费分析饼图</h1>
   <hr>
-  <div class="employee-container">
-    <div class="employee-thumbnail">
-      <a href="/happypeter"><%= image_tag 'team/peter.jpeg' %></a>
-      <h3><a href="/happypeter">@Peter Wang</a></h3>
-    </div>
-    <!-- closes employee-thumbnail -->
-    <div class="employee-thumbnail">
-      <a href="/luckyyang"><%= image_tag 'team/luckyyang.jpg' %></a>
-      <h3><a href="/luckyyang">@刘吉洋</a></h3>
-    </div>
-    <!-- closes employee-thumbnail -->
-    <div class="employee-thumbnail">
-      <a href="/billie66"><%= image_tag 'team/billie66.png' %></a>
-      <h3><a href="/billie66">@billie66</a></h3>
-    </div>
-    <!-- closes employee-thumbnail -->
-  </div>
+  <div id="pie-demo-1"></div>
 </div>
