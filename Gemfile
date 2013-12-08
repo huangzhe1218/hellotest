@@ -37,6 +37,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails', '0.4.0'
 gem 'haml'
 gem "d3-rails", "~> 3.3.7"
+gem 'jquery_mobile_rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

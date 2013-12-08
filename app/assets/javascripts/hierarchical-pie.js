@@ -15,7 +15,8 @@ var HierarchicalPie = function(options) {
     dataSchema        : {
       idField       : 'id_category',
       valueField    : 'cost',
-      childrenField : 'categories'
+      childrenField : 'categories',
+      weekField : 'category'
     },
     hoverPieAnimation : {
       easing   : "elastic",
@@ -94,6 +95,9 @@ var HierarchicalPie = function(options) {
 
     self.costLabel = self.focusGroup.append('g')
       .attr('class', 'arc-cost').append("text").attr("dy", "1.2em");
+
+    self.weekLabel = self.focusGroup.append('g')
+    .attr('class','arc-category').append("text").attr("dy","2.4em");
 
     self.navigation = $(config.navigation);
     self.navigation.find('#btnRoot').on('click', self.goToRoot);
@@ -174,6 +178,7 @@ var HierarchicalPie = function(options) {
     var percentage = (((d.endAngle - d.startAngle) / (2 * Math.PI)) * 100).toFixed(1);
     self.percentLabel.text(percentage + '%');
     self.costLabel.text(d.data[config.dataSchema.valueField]);
+    self.weekLabel.text(d.data[config.dataSchema.weekField])
     self.focusGroup.transition().attr('opacity', 1);
     hovered.transition().ease(config.focusAnimation.easing).duration(config.focusAnimation.duration).attr("d", self.arcOver);
 
