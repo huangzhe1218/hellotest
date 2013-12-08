@@ -1,2 +1,6 @@
 //= require font-awesome
 //= require jquery.mobile
+
+.article p img {
+  width: 100%;
+}

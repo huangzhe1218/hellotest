@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+  def show_public
+    courses.find_by_public(1)
+  end
+
 end

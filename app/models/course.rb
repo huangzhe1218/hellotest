@@ -6,4 +6,5 @@ class Course < ActiveRecord::Base
 
   mount_uploader :poster, PosterUploader
 
+
 end

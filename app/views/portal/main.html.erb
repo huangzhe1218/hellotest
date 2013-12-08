@@ -1,0 +1,12 @@
+<div data-role="header">
+  <h1><%= @course.title %></h1>
+  <a href="#" data-icon="back" class="ui-btn-right">返回主页</a>
+</div>
+
+<div data-role="content" data-theme="a" >
+  <div class="article" >
+    <p><%= image_tag @course.poster_url %></p>
+    <h2><%= @course.title %></h2>
+    <p><%= @course.description %></p>
+  </div>
+</div>
