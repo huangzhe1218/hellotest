@@ -1,7 +1,7 @@
 # encoding:utf-8
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :mac
+  attr_accessible :name, :mac, :weibo, :game
   has_many  :courses
 
   before_create { generate_token(:token) }
@@ -18,4 +18,19 @@ class User < ActiveRecord::Base
     courses.find_by_public(1)
   end
 
+  def game_open
+    update_attributes(:game=>true)
+  end
+
+  def game_close
+    update_attributes(:game=>false)
+  end
+
+  def weibo_open
+    update_attributes(:weibo=>true)
+  end
+
+  def weibo_close
+    update_attributes(:weibo=>false)
+  end
 end

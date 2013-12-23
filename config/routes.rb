@@ -5,7 +5,9 @@ Wifiplatform::Application.routes.draw do
   get "/about/showdata" => "about#showdata"
   get "/week/data" => "weeks#data" 
   get "/test" => "portal#show", :as => "portal_other" 
-  get "/:member_mac/main" => "portal#main"
+  get "/:member_mac/main" => "portal#main", :as => "portal_main"
+  get "/hotapp" => "portal#hotapp"
+  get "/about/message" => "about#message"
   get "/create_course" => "courses#new", :as=>"create_course"
   get "/logout"=>"user#logout", :as=>"logout"
   post "/course" => "courses#create"
@@ -14,7 +16,12 @@ Wifiplatform::Application.routes.draw do
   delete "/:member_name/:course_name" => "courses#destroy"
   match '/update_poster/:course_id' => 'courses#update_poster', :as => :update_poster
   put '/course' => 'courses#update'
-
-
+  
+  get '/connect' => 'weibo#connect'
+  get '/callback' => 'weibo#callback'
+  get '/about/checkapi' => 'about#checkapi'
+  post '/example' => 'about#example'
+  post '/:app_name/open' => 'app#app_on'
+  post '/:app_name/close' => 'app#app_off'
 
 end

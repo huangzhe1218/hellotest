@@ -1,0 +1,23 @@
+<%= form_tag("/example")  do  %>
+
+  <dl class="form">
+    <dt> <%= label_tag "消息标题" %> </dt>
+    <dd> <%= text_field_tag :title  %> </dd>
+  </dl>
+  <dl class="form">
+    <dt>
+      <%= label_tag "消息内容" %>
+      (<%= t('remaining') %><span id='desc_count'></span> <%= t('characters') %>)
+    </dt>
+    <dd>
+      <%= text_area_tag :msg  %>
+    </dd>
+  </dl>
+  <br>
+  <div>
+    <%= submit_tag "群发消息", :class => "button primary" %>
+    <span id="edit-course-delete">
+      <%= link_to "返回", :root  %>
+    </span>
+  </div>
+<% end %>

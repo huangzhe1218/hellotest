@@ -1,6 +1,6 @@
 <div data-role="header">
   <h1><%= @course.title %></h1>
-  <a href="#" data-icon="back" class="ui-btn-right">返回主页</a>
+  <a href="#" onclick="location='http://wifi.smbiztalk.cn/hotapp';"  data-icon="back" class="ui-btn-right">下载应用</a>
 </div>
 
 <div data-role="content" data-theme="a" >
@@ -9,4 +9,13 @@
     <h2><%= @course.title %></h2>
     <p><%= @course.description %></p>
   </div>
+  <br>
+  <% if @user.weibo == true %>
+    <%= render "weibo"  %>
+  <% end %> 
+  <% if @user.game == true %>
+  <%= render "game"  %>
+<% end %>
+  <br />
+  <br />
 </div>

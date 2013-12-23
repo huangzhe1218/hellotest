@@ -1,0 +1,47 @@
+<% content_for :template_js do %>
+<script>
+  jQuery(function($) {
+      $( "#weiboon" ).click(function() {
+        $.ajax({type:"POST",url:"/weibo/open"})
+      });
+      $( "#weibooff" ).click(function() {
+        $.ajax({type:"POST",url:"/weibo/close"})
+      });
+      $( "#gameon" ).click(function() {
+        $.ajax({type:"POST",url:"/game/open"})
+      });
+      $( "#gameoff" ).click(function() {
+        $.ajax({type:"POST",url:"/game/close"})
+      });
+  });
+</script>
+<% end %>
+<div class="about-team">
+  <h2>行业应用</h2>
+  <hr>
+  <br/>
+
+    <div class ="course">
+      <div class="course-thumb">
+        <img data-src="holder.js/200x200" alt="200x200" style="width: 200px; height: 200px;" src="../../../uploads/poster/gift.png" >
+        <div class="caption">
+          <h3>优惠券</h3>
+          <p>访客通过微博账号登陆，获取优惠券.</p>
+          <p><a href="#"  id="weiboon" class="btn btn-primary">开启</a> <a href="#" id="weibooff" class="btn">关闭</a></p>
+        </div>
+      </div>  
+    </div>
+    <br/>
+    <hr>
+
+    <div class ="course">
+      <div class="course-thumb">
+        <img data-src="holder.js/200x200" alt="200x200" style="width: 200px; height: 200px;" src="../../../uploads/poster/game.png" >
+        <div class="caption">
+          <h3>餐前游戏</h3>
+          <p>为等位访客提供小游戏.</p>
+          <p><a href="#" id="gameon" class="btn btn-primary">启动</a> <a href="#" id="gameoff" class="btn">关闭</a></p>
+        </div>
+      </div>  
+    </div>
+</div>

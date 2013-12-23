@@ -1,34 +1,34 @@
 <% content_for :template_js do %>
   <%= javascript_include_tag 'hierarchical-pie'%> 
   <%= javascript_include_tag 'mustache'%>
-<script>
-  jQuery(function($) {
-    var holder = $('#pie-demo1');
-    holder.empty();
+  <script>
+    jQuery(function($) {
+      var holder = $('#pie-demo1');
+      holder.empty();
 
-    $.getJSON('/week/data.json', function(data) {
-      new HierarchicalPie({
-        chartId : '#pie-demo-1',
-        data : data,
-        legendContainer : '#pie-chart-legend-1',
-        navigation      : '#chart-navigator-1'
+      $.getJSON('/week/data.json', function(data) {
+        new HierarchicalPie({
+          chartId : '#pie-demo-1',
+          data : data,
+          legendContainer : '#pie-chart-legend-1',
+          navigation      : '#chart-navigator-1'
+        });
       });
     });
-  });
-</script>
+  </script>
 <% end %>
 
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag "piestyle" %>
 <% end  %>  
 <div class="about-team">
-  <h1>每周/日消费分析饼图</h1>
+  <h2>每周/日消费分析饼图</h2>
   <hr>
   <br>
-   <div class="chart-navigator clearfix" id="chart-navigator-1" >
-      <a href="#" class="btn btn-primary" id="btnRoot" title="Go back to root" rel="tooltip">返回</a>
+  <div class="chart-navigator clearfix" id="chart-navigator-1" >
+    <a href="#" class="btn btn-primary" id="btnRoot" title="Go back to root" rel="tooltip">返回</a>
   </div>
-  
+
   <div id="pie-demo-1"></div>
 
 
@@ -45,21 +45,21 @@
     </table>
     <hr>
     <% content_for :template_js do %>
-    <script id="rowTemplate" type="text/template">
-      <td class="color-cell">
-        <span class="cat-color" style="background: {{color}};"></span>
-      </td>
-      <td>
-        {{#isDirect}}
-        <span title="Directly in this category" rel="tooltip"><i class="icon-info"></i></span>
-        {{/isDirect}}
-        {{category}}
-      </td>
-      <td class="cost">{{cost}}</td>
-    </script>
-  <% end %>
+      <script id="rowTemplate" type="text/template">
+        <td class="color-cell">
+          <span class="cat-color" style="background: {{color}};"></span>
+        </td>
+        <td>
+          {{#isDirect}}
+          <span title="Directly in this category" rel="tooltip"><i class="icon-info"></i></span>
+          {{/isDirect}}
+          {{category}}
+        </td>
+        <td class="cost">{{cost}}</td>
+      </script>
+    <% end %>
   </div>
-  
+
 
 
 </div>

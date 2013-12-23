@@ -16,6 +16,7 @@ gem 'ruby-pinyin'
 gem 'acts_as_list'
 gem "rails_autolink"
 
+gem 'jpush_api_ruby_client'
 gem "jquery-atwho-rails", "0.1.6"
 
 # Gems used only for assets and not required
@@ -38,7 +39,7 @@ gem 'jquery-fileupload-rails', '0.4.0'
 gem 'haml'
 gem "d3-rails", "~> 3.3.7"
 gem 'jquery_mobile_rails'
-
+gem 'weibo_2'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 

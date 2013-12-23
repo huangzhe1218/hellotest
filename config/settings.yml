@@ -1,12 +1,16 @@
 default: &default
   image:
     default_poster: 'http://wifi.smbiztalk.cn/uploads/poster/telecom.png'
-  alipay:
+  alpay:
     pid: '2088402465243298'
     secret: 'p182a5k2yekoo5fzjjcbpysu41ak4wlb'
     seller_email: 'myemail@gmail.com'
     return_url: 'http://mysite.com/orders/done'
     notify_url: 'http://mysite.com/orders/notify'
+
+  pushkey:
+    app_key: 'b1a1740a002b3c52e2d36e55' #必填，例如466f7032ac604e02fb7bda89
+    master_secret: '4369e7863de2cca9ebbb0049' #必填，每个应用都对应一个masterSecret
 
 production:
   <<: *default

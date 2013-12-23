@@ -1,0 +1,35 @@
+
+
+
+body {
+color: #333;
+font-size: 50px;
+}
+
+/* Styling of the page contents */
+.article p {
+	margin: 0 0 1em;
+	line-height: 1.5;
+}
+.article p img {
+	width: 80%;
+}
+.article p:first-child {
+	text-align: center;
+}
+.article small {
+	display: block;
+	font-size: 75%;
+	color: #c0c0c0;
+}
+.article p:last-child {
+	text-align: right;
+}
+.article a.ui-btn {
+	margin-right: 2em;
+	-webkit-border-radius: .4em;
+	border-radius: .4em;
+}
+.article h2 {
+	text-align: center;
+}

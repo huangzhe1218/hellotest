@@ -4,6 +4,10 @@ class PortalController < ApplicationController
     render :layout => 'portal'
   end
 
+  def hotapp
+    render :layout => 'portal'
+  end
+  
   def main
     @user = User.find_by_mac(params[:member_mac])
     unless @user
