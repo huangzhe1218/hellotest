@@ -5,6 +5,9 @@ Wifiplatform::Application.routes.draw do
   get "/about/showdata" => "about#showdata"
   get "/week/data" => "weeks#data" 
   get "/test" => "portal#show", :as => "portal_other" 
+  get "/rank" => "portal#rank"
+  get "/hotmenu" => "portal#hotmenu"
+  get "/:member_mac/portal" => "portal#portal" 
   get "/:member_mac/main" => "portal#main", :as => "portal_main"
   get "/hotapp" => "portal#hotapp"
   get "/about/message" => "about#message"
@@ -20,8 +23,10 @@ Wifiplatform::Application.routes.draw do
   get '/connect' => 'weibo#connect'
   get '/callback' => 'weibo#callback'
   get '/about/checkapi' => 'about#checkapi'
+  get 'about/thirdparty' => 'about#thirdparty'
   post '/example' => 'about#example'
-  post '/:app_name/open' => 'app#app_on'
-  post '/:app_name/close' => 'app#app_off'
-
+  post '/:member_mac/:app_name/open' => 'app#app_on'
+  post '/:member_mac/:app_name/close' => 'app#app_off'
+  post '/freeland'  =>"app#freeland"
+  post '/wificon'  =>"app#wificon"
 end

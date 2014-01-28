@@ -1,8 +1,9 @@
 # encoding:utf-8
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :mac, :weibo, :game
-  has_many  :courses
+  attr_accessible :name, :mac, :weibo, :game, :menu, :group
+  has_many  :courses 
+  has_many  :messages
 
   before_create { generate_token(:token) }
 
@@ -33,4 +34,22 @@ class User < ActiveRecord::Base
   def weibo_close
     update_attributes(:weibo=>false)
   end
+
+  def group_open
+    update_attributes(:group=>true)
+  end
+
+  def group_close
+    update_attributes(:group=>false)
+  end
+
+  def menu_open
+    update_attributes(:menu=>true)
+  end
+
+  def menu_close
+    update_attributes(:menu=>false)
+  end
+
 end
+

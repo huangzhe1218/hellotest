@@ -1,16 +1,16 @@
-<%= form_tag("/example")  do  %>
+<%= form_for(@message, :url=>"/example")  do |f| %>
 
+  <%= f.hidden_field :user_id %>
   <dl class="form">
-    <dt> <%= label_tag "消息标题" %> </dt>
-    <dd> <%= text_field_tag :title  %> </dd>
+    <dt> <%= f.label "消息标题" %> </dt>
+    <dd> <%= f.text_field :title, :class => "short"  %> </dd>
   </dl>
   <dl class="form">
     <dt>
-      <%= label_tag "消息内容" %>
-      (<%= t('remaining') %><span id='desc_count'></span> <%= t('characters') %>)
+      <%= f.label "消息内容" %>
     </dt>
     <dd>
-      <%= text_area_tag :msg  %>
+      <%= f.text_area :content, :size => "14x4" %>
     </dd>
   </dl>
   <br>

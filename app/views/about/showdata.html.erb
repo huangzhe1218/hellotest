@@ -21,18 +21,20 @@
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag "piestyle" %>
 <% end  %>  
-<div class="about-team">
+<div class="about-content">
   <h2>每周/日消费分析饼图</h2>
   <hr>
+  <div class="product3-zone">
+  <div class="product-info-left3">
   <br>
   <div class="chart-navigator clearfix" id="chart-navigator-1" >
     <a href="#" class="btn btn-primary" id="btnRoot" title="Go back to root" rel="tooltip">返回</a>
   </div>
 
   <div id="pie-demo-1"></div>
-
-
-  <div id="pie-chart-legend-1">
+  </div>
+  <div class="products-info-right3" >
+  <div id="pie-chart-legend-1" >
     <table class="table table-condensed table-legend">
       <thead>
         <tr>
@@ -59,7 +61,10 @@
       </script>
     <% end %>
   </div>
-
-
+  </div>
+  <h2>转化率数据统计</h2>
+  <hr/>
 
 </div>
+<%= render "trans"  %>
+

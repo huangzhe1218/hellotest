@@ -1,11 +1,3 @@
-<% content_for :template_js do %>
-  <script>
-    $('#course_desc').NobleCount('#desc_count',{
-      on_negative: 'go_red',
-      on_positive: 'go_green',
-      max_chars: 33});
-  </script>
-<% end %>
 <%= form_for(@course, :url => "/course") do |f| %>
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :name %>

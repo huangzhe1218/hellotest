@@ -2,5 +2,28 @@
   <h2>消息群发</h2>
   <hr>
 
-  <%= render 'add_form' %>
+  <%= render 'add_form', :message => @message  %>
 </div>
+<hr>
+<br>
+<h2>群发记录</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>消息标题</th>
+      <th>发送时间</th>
+      <th>消息状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each_with_index do |msg,index| %>
+    <tr>
+      <td><%= index %></td>
+      <td><%= msg.title %></td>
+      <td><%= msg.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+      <td>发送成功</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
