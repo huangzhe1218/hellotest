@@ -1,4 +1,4 @@
-zh-CN:
+﻿zh-CN:
   people: "个会员"
   no_user_found: "没有用户注册为会员"
   no_watcher_found: "没有用户关注这门课程"
@@ -261,3 +261,24 @@ zh-CN:
       month: 月
       second: 秒
       year: 年
+  activerecord:
+    attributes:
+      member:
+        phonenum: "电话号码"
+        name: "用户名"
+        password: "密码"
+        password_confirmation: "密码确认"
+    errors:
+      models:
+        member:
+          attributes:
+            phonenum:
+              blank: "不能为空"
+            password:
+              confirmation: "密码不匹配"
+              too_short: "最短%{count}个字符"
+            password_digest:
+              blank: "不能为空"
+            name:
+              blank: "请添加用户名"
+              taken: "已占用"

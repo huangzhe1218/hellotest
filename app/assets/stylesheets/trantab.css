@@ -1,0 +1,73 @@
+.container1 table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #666;
+  font-size: 0.8em;
+}
+
+.container1 caption {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+
+.container1 col {
+  border-right: 1px solid #ccc;
+}
+
+col#albumCol {
+  border: none;
+}
+
+thead {
+  background: #ccc url(../images/bar.gif) repeat-x left center;
+  border-top: 1px solid #a5a5a5;
+  border-bottom: 1px solid #a5a5a5;
+}
+
+th {
+  font-weight: normal;
+  text-align: center;
+}
+
+#playlistPosHead {
+  text-indent: -1000em;
+  width:0.2em;
+}
+
+th, td {
+  padding: 0.1em 1em;
+  text-align: center;
+}
+
+.odd {
+  background-color:#edf5ff;
+}
+
+tr:hover {
+  background-color:#3d80df;
+  color: #fff;
+}
+
+thead tr:hover {
+  background-color: transparent;
+  color: inherit;
+}
+
+
+
+/*以下是进度条的css代码*/
+/* #n { margin:10px auto; width:920px; border:1px solid #CCC;
+ font-size:14px; line-height:30px; }
+#n a { padding:0 4px; color:#333 }  */
+.Bars { position: relative; width:90%;
+    /* 宽度 */ border: 1px solid #70AE87; padding: 1px; margin:0 auto; } 
+.Bars div { display: block; position: relative;
+ background:#70AE87;/* 进度条背景颜色 */ color: #333333;
+ height: 20px; /* 高度 */ line-height: 20px;
+  /* 必须和高度一致，文本才能垂直居中 */ } 
+.Bars div{ background:#70AE87} 
+.Bar div span,.Bars div span { position: absolute; width: 200px;
+ /* 宽度 */ text-align: center; font-weight: bold; } 
+.cent{ margin:0 auto; width:90%; overflow:hidden} 
+

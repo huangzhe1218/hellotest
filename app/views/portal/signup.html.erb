@@ -1,0 +1,40 @@
+<div class="single-form-container">
+  <%= form_for @member do |f| %>
+    <div class="boxed-group">
+      <h3>注册</h3>
+      <div class="boxed-group-inner">
+        <% if @member.errors.any? %>
+          <div class="form_errorred">
+            填写的信息有误
+          </div>
+        <% end %>
+        <dl class="form">
+          <dt><%= f.label :name %></dt>
+          <dd><%= f.text_field :name %></dd>
+          <% if @member.errors[:name].any? %>
+            <dd class="error"><%= @member.errors[:name][0] %></dd>
+          <% end %>
+        </dl>
+        <dl class="form">
+          <dt> <%= f.label :phonenum %></dt>
+          <dd> <%= f.text_field :phonenum %> </dd>
+          <% if @member.errors[:phonenum].any? %>
+            <dd class="error"><%= @member.errors[:phonenum][0] %></dd>
+          <% end %>
+        </dl>
+        <dl class="form">
+          <dt> <%= f.label :password %> </dt>
+          <dd> <%= f.password_field :password %> </dd>
+          <% if @member.errors[:password].any? %>
+            <dd class="error"><%= @member.errors[:password][0] %></dd>
+          <% end %>
+        </dl>
+        <dl class="form">
+          <dt> <%= f.label :password_confirmation %> </dt>
+          <dd> <%= f.password_field :password_confirmation %> </dd>
+        </dl>
+        <p><%= f.submit "注册", :class => "button primary" %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

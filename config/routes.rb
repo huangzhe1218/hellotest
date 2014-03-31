@@ -1,4 +1,10 @@
 Wifiplatform::Application.routes.draw do
+  get "/msignup" => "members#signup", :as => "msignup"
+  get "/mlogin" => "members#login", :as=>"mlogin"
+  delete "/:member_mac/logout" => "members#logout", :as => "mlogout" 
+  post "/create_login_session" => "members#create_login_session"
+  resources :members, only: [:create]
+
   root :to=>"about#main"
   match "login"=>"info#marketing",  :as=>"login"
   match "submit_login_form" => "user#login"
@@ -7,8 +13,7 @@ Wifiplatform::Application.routes.draw do
   get "/test" => "portal#show", :as => "portal_other" 
   get "/rank" => "portal#rank"
   get "/hotmenu" => "portal#hotmenu"
-  get "/:member_mac/portal" => "portal#portal" 
-  get "/:member_mac/main" => "portal#main", :as => "portal_main"
+  get "/:member_mac/portal" => "portal#portal", :as => "portal_main" 
   get "/hotapp" => "portal#hotapp"
   get "/about/message" => "about#message"
   get "/create_course" => "courses#new", :as=>"create_course"

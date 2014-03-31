@@ -1,0 +1,6 @@
+A server is already running. Check /root/WifiPlatform/tmp/pids/server.pid.
+=> Booting WEBrick
+=> Rails 3.2.13 application starting in development on http://0.0.0.0:80
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+Exiting

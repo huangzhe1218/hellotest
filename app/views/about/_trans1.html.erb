@@ -1,0 +1,42 @@
+﻿<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "nv.d3" %>
+<% end  %>  
+<% content_for :template_js do %>
+  <%= javascript_include_tag 'd3.v3.min'%> 
+  <%= javascript_include_tag 'nv.d3'%>
+  <script>
+d3.json("/jqm/img/daytrend.json", function(data) {
+  	 nv.addGraph(function() {
+    var chart =
+     nv.models.multiBarChart()
+      .transitionDuration(350)
+       .x(function(d) { return d[0] })   
+       .y(function(d) { return d[1] })  
+      .reduceXTicks(false)
+      .rotateLabels(0)     
+      .showControls(true)  
+      .groupSpacing(0.1);
+
+    chart.xAxis
+        .tickFormat(d3.format(',f'));
+
+    chart.yAxis
+        .tickFormat(d3.format('.f'));
+
+    d3.select('#chart1 svg')
+        .datum(data)
+        .call(chart);
+
+    nv.utils.windowResize(chart.update);
+	
+    return chart;
+	
+})
+});
+  </script>
+<% end %>
+<div class="container1">
+<div id='chart1'>
+  <svg style='height:500px'> </svg>
+</div>
+</div>

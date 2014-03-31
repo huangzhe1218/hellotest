@@ -37,18 +37,20 @@ class AppController < ApplicationController
 
   def freeland
     params = {}
-    params["gw_id"]="huangzhe"
-    params["gw_address"]="192.168.1.1"
+    params["gw_id"]="A8574EFCCBE0"
+    params["gw_address"]="192.168.42.1"
     params["gw_port"]="2060"
-    params["authenticator"]="apDefaultAuthenticator"
-    params["submit[apAuthLocalUserconnect]"]="Connect"
-    params["apAuthLocalUser[username]"]="joel"
-    params["apAuthLocalUser[password]"]="12345678" 
-    uri = URI.parse("http://auth.smbiztalk.cn/authpuppy/web/ws/?action=auth&authenticator=apAuthLocalUser")  
+    params["platform"]="ctbri"
+    #params["authenticator"]="apDefaultAuthenticator"
+    #params["submit[apAuthSplashOnlyConnect]"]="Connect"
+    #uri = URI.parse("http://auth.smbiztalk.cn/authpuppy/web/ws/?action=auth&authenticator=apAuthSplashOnly")  
+    uri = URI.parse("http://117.34.78.195/authenticate")  
     res1 = Net::HTTP.post_form(uri, params)   
-    @res = JSON.parse(res1.body)['values']['redirect']
-    render :layout => false;    
+    res = res1.body
+    #@res = JSON.parse(res1.body)['values']['redirect']
+    render :text => res;    
   end
+
   def wificon
     param1={}
     param1["gw_id"]="huangzhe"
